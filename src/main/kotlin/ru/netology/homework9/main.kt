@@ -19,6 +19,7 @@ object ChatService {
         chatLists.clear()
 
     }
+
     fun addChat(userId: Int, chat: Chat, message: Message) {
 
         chatLists.getOrPut(userId) { ChatList() }.chats.add(chat)
@@ -74,14 +75,14 @@ object ChatService {
         val chatList = chatLists[userId] ?: throw NoChatListException()
 
         return when (chatList.chats.find {
-            it.message.find { it.ownerId != ownerId && it.read==false } != null
+            it.message.find { it.ownerId != ownerId && it.read == false } != null
         }) {
             null ->
-             "No message"
+                "No message"
 
 
             else -> chatList.chats.takeLastWhile {
-                it.message.find { it.ownerId != ownerId && it.read==false } != null
+                it.message.find { it.ownerId != ownerId && it.read == false } != null
             }
         }
     }

@@ -11,6 +11,7 @@ class MainKtTest {
         ChatService.clear()
 
     }
+
     @Test
     fun addChat() {
         ChatService.addChat(1, Chat(chatId = 1, "Отдых"), Message(1, 1, "Привет"))
